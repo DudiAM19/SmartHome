@@ -1,0 +1,10 @@
+{
+    "Home": {
+        "name": "home",
+        "type": "FontAwesome"
+    },
+    "Dashboard": {
+        "name": "monitor-dashboard",
+        "type": "MaterialCommunityIcons"
+    }
+}
