@@ -1,9 +1,6 @@
-import Home from "./Home"
-import Monitoring from "./Monitoring"
-import FrontPage from "./FrontPage"
+import Home from './Home';
+import Dashboard from './Dashboard';
+import FrontPage from './FrontPage';
+import InputApi from './InputApi';
 
-export {
-    Home,
-    Monitoring,
-    FrontPage
-}
+export {Home, Dashboard, FrontPage, InputApi};

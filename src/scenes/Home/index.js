@@ -37,6 +37,7 @@ const DATA = [
 const Item = props => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
   return (
     <View style={styles.ControlSection}>
       <Image source={props.image} style={styles.ImgControl} />
@@ -53,7 +54,7 @@ const Item = props => {
   );
 };
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <Container backgroundColor="#2D3436">
       <StatusBar barStyle="light-content" backgroundColor="#2D3436" />
@@ -62,7 +63,9 @@ const Home = () => {
           <Text style={styles.textHeader}>Welcome home</Text>
           <Text style={styles.textName}>Pranto Suwarno</Text>
         </View>
-        <TouchableOpacity style={styles.ImgSection}>
+        <TouchableOpacity
+          style={styles.ImgSection}
+          onPress={() => navigation.navigate('InputApi')}>
           <Image
             source={require('../../assets/settings.png')}
             style={styles.Img}
@@ -79,7 +82,7 @@ const Home = () => {
             <Text style={styles.TextTemp}>Average Temperature</Text>
           </View>
           <View style={styles.ConditionSection}>
-            <Text style={styles.Number}>90°C</Text>
+            <Text style={styles.Number}>29°C</Text>
             <Text style={styles.Condition}>Good</Text>
           </View>
         </View>
