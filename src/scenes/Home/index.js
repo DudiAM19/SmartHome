@@ -2,51 +2,19 @@ import React, {useState} from 'react';
 import {View, Text, StatusBar, Image, Switch, FlatList} from 'react-native';
 import {Container} from 'components';
 import styles from './styles';
-
-const DATA = [
-  {
-    id: 1,
-    name: 'Lampu Utama',
-    image: require('../../assets/lamp.png'),
-  },
-  {
-    id: 2,
-    name: 'Kipas Angin',
-    image: require('../../assets/fan.png'),
-  },
-  {
-    id: 3,
-    name: 'Lampu Kamar 1',
-    image: require('../../assets/lamp.png'),
-  },
-  {
-    id: 4,
-    name: 'Lampu Kamar 2',
-    image: require('../../assets/lamp.png'),
-  },
-];
-
-const Item = props => {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
-  return (
-    <View style={styles.ControlSection}>
-      <Image source={props.image} style={styles.ImgControl} />
-      <Text style={styles.TextControl}>{props.name}</Text>
-      <Switch
-        trackColor={{false: '#767577', true: '#fff347'}}
-        thumbColor={isEnabled ? 'white' : '#f4f3f4'}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-        style={styles.Switch}
-      />
-    </View>
-  );
-};
+import useHome from './useHome';
 
 const Home = ({navigation}) => {
+  const {
+    fan,
+    lamp1,
+    lamp2,
+    lamp3,
+    handleFan,
+    handleLamp1,
+    handleLamp2,
+    handleLamp3,
+  } = useHome();
   return (
     <Container backgroundColor="#2D3436">
       <StatusBar barStyle="light-content" backgroundColor="#2D3436" />
@@ -70,12 +38,70 @@ const Home = ({navigation}) => {
             <Text style={styles.Condition}>Good</Text>
           </View>
         </View>
-        <FlatList
-          data={DATA}
-          numColumns={2}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => <Item image={item.image} name={item.name} />}
-        />
+        <View style={{flexDirection: 'row'}}>
+          <View style={styles.ControlSection}>
+            <Image
+              source={require('../../assets/lamp.png')}
+              style={styles.ImgControl}
+            />
+            <Text style={styles.TextControl}>{'Lampu Utama'}</Text>
+            <Switch
+              trackColor={{false: '#767577', true: '#fff347'}}
+              thumbColor={lamp1 ? 'white' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={() => handleLamp1()}
+              value={lamp1}
+              style={styles.Switch}
+            />
+          </View>
+          <View style={styles.ControlSection}>
+            <Image
+              source={require('../../assets/fan.png')}
+              style={styles.ImgControl}
+            />
+            <Text style={styles.TextControl}>{'Kipas Angin'}</Text>
+            <Switch
+              trackColor={{false: '#767577', true: '#fff347'}}
+              thumbColor={fan ? 'white' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={() => handleFan(!fan)}
+              value={fan}
+              style={styles.Switch}
+            />
+          </View>
+        </View>
+        <View style={{flexDirection: 'row'}}>
+          <View style={styles.ControlSection}>
+            <Image
+              source={require('../../assets/lamp.png')}
+              style={styles.ImgControl}
+            />
+            <Text style={styles.TextControl}>{'Lampu Kamar 1'}</Text>
+            <Switch
+              trackColor={{false: '#767577', true: '#fff347'}}
+              thumbColor={lamp2 ? 'white' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={() => handleLamp2()}
+              value={lamp2}
+              style={styles.Switch}
+            />
+          </View>
+          <View style={styles.ControlSection}>
+            <Image
+              source={require('../../assets/lamp.png')}
+              style={styles.ImgControl}
+            />
+            <Text style={styles.TextControl}>{'Lampu Kamar 2'}</Text>
+            <Switch
+              trackColor={{false: '#767577', true: '#fff347'}}
+              thumbColor={lamp3 ? 'white' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={() => handleLamp3()}
+              value={lamp3}
+              style={styles.Switch}
+            />
+          </View>
+        </View>
       </View>
     </Container>
   );

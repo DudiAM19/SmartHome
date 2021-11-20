@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image, FlatList} from 'react-native';
 import {Container} from 'components';
 import styles from './styles';
+import useDashboard from './useDashboard';
 
 const DATA = [
   {
@@ -10,7 +11,7 @@ const DATA = [
     textFire: 'Fire Temperature',
     textTemp: 'Temperature',
     textCondition: 'Good',
-    textLevel: '90°C',
+    textLevel: '',
   },
   {
     id: 2,
@@ -49,6 +50,7 @@ const Item = props => {
 };
 
 const Dashboard = ({navigation}) => {
+  const {danger, gas, temperature} = useDashboard();
   return (
     <Container backgroundColor="#2D3436">
       <View style={styles.Header}>
@@ -61,20 +63,55 @@ const Dashboard = ({navigation}) => {
         </View>
       </View>
       <View style={styles.Card}>
-        <FlatList
-          style={styles.FlatList}
-          data={DATA}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <Item
-              image={item.image}
-              textFire={item.textFire}
-              textTemp={item.textTemp}
-              textCondition={item.textCondition}
-              textLevel={item.textLevel}
-            />
-          )}
-        />
+        {danger === '1' && (
+          <View style={styles.FlatList}>
+            <View style={styles.InfoSection}>
+              <View style={styles.ImgSection}>
+                <Image
+                  source={require('../../assets/ezgif.com-gif-maker.gif')}
+                  style={styles.ImgFire}
+                />
+              </View>
+              <View style={styles.dangerTextWrap}>
+                <Text style={styles.dangerText}>DANGER</Text>
+              </View>
+            </View>
+          </View>
+        )}
+        <View style={styles.FlatList}>
+          <View style={styles.InfoSection}>
+            <View style={styles.ImgSection}>
+              <Image
+                source={require('../../assets/gas-tank.png')}
+                style={styles.Img}
+              />
+            </View>
+            <View style={styles.TextSection}>
+              <Text style={styles.TextFire}>{'Gas'}</Text>
+            </View>
+            <View style={styles.LevelSection}>
+              <Text style={styles.TextLevel}>{gas}</Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.FlatList}>
+          <View style={styles.InfoSection}>
+            <View style={styles.ImgSection}>
+              <Image
+                source={require('../../assets/gas-tank.png')}
+                style={styles.Img}
+              />
+            </View>
+            <View style={styles.TextSection}>
+              <Text style={styles.TextFire}>{'Temperature'}</Text>
+            </View>
+            <View style={styles.LevelSection}>
+              <Text style={styles.TextLevel}>
+                {parseInt(temperature) + '°C'}
+              </Text>
+            </View>
+          </View>
+        </View>
       </View>
     </Container>
   );

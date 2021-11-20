@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "203306384248",
+    "firebase_url": "https://smart-home-af493-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "smart-home-af493",
+    "storage_bucket": "smart-home-af493.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203306384248:android:75d2644aebc5cc15afe68d",
+        "android_client_info": {
+          "package_name": "com.smarthome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203306384248-mec81gcdnre9lfipfapa7jg0sfd0qnac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQMpc6BkYMOn1chDXT5hqS_D962-ZHa6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203306384248-mec81gcdnre9lfipfapa7jg0sfd0qnac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

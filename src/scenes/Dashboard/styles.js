@@ -55,7 +55,7 @@ export default StyleSheet.create({
     elevation: 3,
     flexDirection: 'row',
     marginHorizontal: width * 0.05,
-    marginBottom: width * 0.04,
+    marginBottom: width * 0.2,
   },
   ImgSection: {
     // backgroundColor: 'red',
@@ -67,6 +67,25 @@ export default StyleSheet.create({
     marginLeft: width * 0.08,
     marginRight: width * 0.02,
   },
+  ImgFire: {
+    width: width * 0.15,
+    height: width * 0.22,
+    marginTop: width * 0.05,
+    marginLeft: width * 0.08,
+    marginRight: width * 0.02,
+  },
+  dangerTextWrap: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingLeft: width * 0.1,
+    // paddingHorizontal: width * 0.06,
+  },
+  dangerText: {
+    fontSize: RFValue(25),
+    fontWeight: 'bold',
+    color: Colors.DANGER,
+    alignItems: 'center',
+  },
   TextSection: {
     width: width * 0.3,
     alignItems: 'center',
@@ -75,13 +94,14 @@ export default StyleSheet.create({
   },
   TextFire: {
     fontWeight: 'bold',
-    fontSize: RFValue(13),
+    fontSize: RFValue(18),
     color: Colors.BLACK_TEXT,
   },
   TextTemp: {
     fontWeight: 'bold',
     fontSize: RFValue(13),
     marginBottom: width * 0.03,
+    color: Colors.BLACK_TEXT,
   },
   TextCondition: {
     fontWeight: 'bold',
@@ -98,7 +118,8 @@ export default StyleSheet.create({
   TextLevel: {
     fontWeight: 'bold',
     fontSize: RFValue(30),
-    marginBottom: width * 0.05,
+    // marginBottom: width * 0.05,
+    color: Colors.BLACK_TEXT,
   },
   FlatList: {
     marginTop: -60,
