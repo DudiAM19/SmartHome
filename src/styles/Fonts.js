@@ -1,5 +1,5 @@
 export const PMedium = 'ProductSans-Medium';
-export const PRegular = 'ProductSans-Regular';
+export const PRegular = 'OpenSans-Regular';
 export const PLight = 'ProductSans-Light';
 export const MMedium = 'Montserrat-Medium';
 export const MRegular = 'Montserrat-Regular';

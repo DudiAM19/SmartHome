@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
+import {View, Text, Image, FlatList} from 'react-native';
 import {Container} from 'components';
 import styles from './styles';
 
@@ -7,7 +7,7 @@ const DATA = [
   {
     id: 1,
     image: require('../../assets/flame.png'),
-    textFire: 'Fire',
+    textFire: 'Fire Temperature',
     textTemp: 'Temperature',
     textCondition: 'Good',
     textLevel: '90°C',
@@ -59,14 +59,6 @@ const Dashboard = ({navigation}) => {
           />
           <Text style={styles.TextLeft}>Monitoring System</Text>
         </View>
-        <TouchableOpacity
-          style={styles.Right}
-          onPress={() => navigation.navigate('InputApi')}>
-          <Image
-            source={require('../../assets/settings.png')}
-            style={styles.ImgSetting}
-          />
-        </TouchableOpacity>
       </View>
       <View style={styles.Card}>
         <FlatList

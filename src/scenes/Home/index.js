@@ -1,13 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  StatusBar,
-  Image,
-  TouchableOpacity,
-  Switch,
-  FlatList,
-} from 'react-native';
+import {View, Text, StatusBar, Image, Switch, FlatList} from 'react-native';
 import {Container} from 'components';
 import styles from './styles';
 
@@ -63,14 +55,6 @@ const Home = ({navigation}) => {
           <Text style={styles.textHeader}>Welcome home</Text>
           <Text style={styles.textName}>Pranto Suwarno</Text>
         </View>
-        <TouchableOpacity
-          style={styles.ImgSection}
-          onPress={() => navigation.navigate('InputApi')}>
-          <Image
-            source={require('../../assets/settings.png')}
-            style={styles.Img}
-          />
-        </TouchableOpacity>
       </View>
       <View style={styles.Card}>
         <View style={styles.AverageSection}>

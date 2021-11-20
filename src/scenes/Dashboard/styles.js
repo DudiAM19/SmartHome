@@ -1,5 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
-import {Colors, Fonts} from 'styles';
+import {Colors} from 'styles';
 const {width} = Dimensions.get('window');
 import {RFValue} from 'react-native-responsive-fontsize';
 
@@ -33,7 +33,7 @@ export default StyleSheet.create({
     height: width * 0.05,
   },
   Card: {
-    backgroundColor: Colors.WHITE,
+    backgroundColor: 'white',
     width: width,
     height: width * 1.2,
     borderTopEndRadius: 30,
@@ -76,6 +76,7 @@ export default StyleSheet.create({
   TextFire: {
     fontWeight: 'bold',
     fontSize: RFValue(13),
+    color: Colors.BLACK_TEXT,
   },
   TextTemp: {
     fontWeight: 'bold',

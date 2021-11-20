@@ -17,6 +17,7 @@ export default StyleSheet.create({
     color: Colors.WHITE,
     fontWeight: 'bold',
     fontSize: RFValue(20),
+    fontFamily: Fonts.PRegular,
   },
   textName: {
     color: Colors.WHITE,
@@ -37,6 +38,7 @@ export default StyleSheet.create({
     borderTopEndRadius: 30,
     borderTopStartRadius: 30,
     alignItems: 'center',
+    flex: 1,
   },
   AverageSection: {
     width: width * 0.8,
@@ -88,6 +90,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: RFValue(20),
     marginTop: width * 0.03,
+    color: Colors.PRIMARY,
   },
   Condition: {
     fontWeight: 'bold',
@@ -99,7 +102,7 @@ export default StyleSheet.create({
     margin: width * 0.03,
     width: width * 0.3,
     height: width * 0.4,
-    // backgroundColor: 'red',
+    backgroundColor: 'white',
     alignItems: 'center',
     borderRadius: 20,
     shadowColor: '#000',
@@ -118,6 +121,7 @@ export default StyleSheet.create({
   },
   TextControl: {
     fontSize: RFValue(12),
+    color: Colors.PRIMARY,
   },
   Switch: {
     marginVertical: width * 0.02,
