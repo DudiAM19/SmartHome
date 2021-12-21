@@ -3,7 +3,7 @@
         "name": "home",
         "type": "FontAwesome"
     },
-    "Dashboard": {
+    "Monitoring": {
         "name": "monitor-dashboard",
         "type": "MaterialCommunityIcons"
     }

@@ -15,7 +15,7 @@ export default StyleSheet.create({
     marginLeft: width * 0.26,
   },
   ImgLeft: {
-    width: width * 0.2,
+    width: width * 0.25,
     height: width * 0.2,
   },
   TextLeft: {
@@ -63,6 +63,13 @@ export default StyleSheet.create({
   Img: {
     width: width * 0.15,
     height: width * 0.15,
+    marginTop: width * 0.1,
+    marginLeft: width * 0.08,
+    marginRight: width * 0.02,
+  },
+  ImgTemperature: {
+    width: width * 0.15,
+    height: width * 0.20,
     marginTop: width * 0.1,
     marginLeft: width * 0.08,
     marginRight: width * 0.02,

@@ -56,7 +56,7 @@ const Dashboard = ({navigation}) => {
       <View style={styles.Header}>
         <View style={styles.Left}>
           <Image
-            source={require('../../assets/analytics.png')}
+            source={require('../../assets/monitoring1.gif')}
             style={styles.ImgLeft}
           />
           <Text style={styles.TextLeft}>Monitoring System</Text>
@@ -90,7 +90,7 @@ const Dashboard = ({navigation}) => {
               <Text style={styles.TextFire}>{'Gas'}</Text>
             </View>
             <View style={styles.LevelSection}>
-              <Text style={styles.TextLevel}>{gas}</Text>
+              <Text style={styles.TextLevel}>{gas} p</Text>
             </View>
           </View>
         </View>
@@ -98,8 +98,8 @@ const Dashboard = ({navigation}) => {
           <View style={styles.InfoSection}>
             <View style={styles.ImgSection}>
               <Image
-                source={require('../../assets/gas-tank.png')}
-                style={styles.Img}
+                source={require('../../assets/temperature.gif')}
+                style={styles.ImgTemperature}
               />
             </View>
             <View style={styles.TextSection}>

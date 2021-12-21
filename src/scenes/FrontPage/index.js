@@ -9,11 +9,11 @@ const FrontPage = ({navigation}) => {
         RANCANGAN BANGUN SMART HOME UNTUK DETEKSI DINI KEBAKARAN MENGUNAKAN
         MIKROKONTROLER BERBASIS ANDROID
       </Text>
-      <Image source={require('../../assets/img.png')} style={styles.img} />
+      <Image source={require('../../assets/myhome.gif')} style={styles.img} />
       <TouchableOpacity
         style={styles.Btn}
         onPress={() => navigation.navigate('App')}>
-        <Text style={styles.TextBtn}>Lanjutkan</Text>
+        <Text style={styles.TextBtn}>Continue</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

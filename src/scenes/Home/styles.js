@@ -126,4 +126,20 @@ export default StyleSheet.create({
   Switch: {
     marginVertical: width * 0.02,
   },
+   hotCondition: {
+    fontSize: RFValue(16),
+    color: '#ec5353',
+    fontWeight: 'bold',
+   },
+   coolCondition: {
+    fontSize: RFValue(16),
+    color: '#0fcfff',
+    fontWeight: 'bold',
+  },
+  normalCondition: {
+     fontSize: RFValue(16),
+    color: '#f58941',
+    fontWeight: 'bold',
+   },
+
 });

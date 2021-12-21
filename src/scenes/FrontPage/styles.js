@@ -10,8 +10,8 @@ export default StyleSheet.create({
     flex: 1,
   },
   img: {
-    width: width * 0.6,
-    height: width * 0.6,
+    width: width * 0.9,
+    height: width * 0.5,
     marginTop: width * 0.1,
   },
   HeadingText: {
@@ -32,9 +32,7 @@ export default StyleSheet.create({
     marginVertical: width * 0.1,
     color: 'blue',
     fontWeight: 'bold',
-    backgroundColor: 'gold',
-    // borderWidth: 1,
-    // borderColor: Colors.PRIMARY,
+    backgroundColor: '#cde8e7',
     borderRadius: 30,
     shadowColor: Colors.PRIMARY,
     shadowOffset: {
@@ -50,4 +48,5 @@ export default StyleSheet.create({
     color: Colors.BLACK_TEXT,
     fontWeight: 'bold',
   },
+ 
 });

@@ -49,13 +49,11 @@ const BottomTabNavigation = () => (
         paddingBottom: width * 0.05,
         borderTopEndRadius: 20,
         borderTopStartRadius: 20,
-        // borderRadius: 10,
-        // marginBottom: width * 0.02,
         paddingHorizontal: width * 0.1,
       },
     }}>
     <BottomTab.Screen name="Home" component={Home} />
-    <BottomTab.Screen name="Dashboard" component={Dashboard} />
+    <BottomTab.Screen name="Monitoring" component={Dashboard} />
   </BottomTab.Navigator>
 );
 

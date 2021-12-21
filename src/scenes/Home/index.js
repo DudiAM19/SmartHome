@@ -14,13 +14,14 @@ const Home = ({navigation}) => {
     handleLamp1,
     handleLamp2,
     handleLamp3,
+    temperature,
   } = useHome();
   return (
     <Container backgroundColor="#2D3436">
       <StatusBar barStyle="light-content" backgroundColor="#2D3436" />
       <View style={styles.Header}>
         <View style={styles.TextSection}>
-          <Text style={styles.textHeader}>Welcome home</Text>
+          <Text style={styles.textHeader}>Welcome Home</Text>
           <Text style={styles.textName}>Pranto Suwarno</Text>
         </View>
       </View>
@@ -34,8 +35,17 @@ const Home = ({navigation}) => {
             <Text style={styles.TextTemp}>Average Temperature</Text>
           </View>
           <View style={styles.ConditionSection}>
-            <Text style={styles.Number}>29°C</Text>
-            <Text style={styles.Condition}>Good</Text>
+            <Text style={styles.Number}>{parseInt( temperature )}°C</Text>
+            {parseInt( temperature ) >= 30 && (
+              <Text style={styles.hotCondition}> Hot</Text>
+            )}
+            {parseInt( temperature ) <= 20 && (
+              <Text style={styles.coolCondition}> Cool</Text>
+            )}
+            {parseInt( temperature ) >= 21 && parseInt( temperature ) <= 29 &&(
+              <Text style={styles.normalCondition}> Normal</Text>
+            )}
+            
           </View>
         </View>
         <View style={{flexDirection: 'row'}}>

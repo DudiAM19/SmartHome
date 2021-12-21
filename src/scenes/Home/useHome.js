@@ -11,7 +11,9 @@ const useHome = () => {
   const [fan, setFan] = useState(false);
   const [lamp1, setLamp1] = useState(false);
   const [lamp2, setLamp2] = useState(false);
-  const [lamp3, setLamp3] = useState(false);
+  const [lamp3, setLamp3] = useState( false );
+  
+  const [temperature, setTemperature] = useState(0);
 
   const handleFan = () => {
     setFan(!fan);
@@ -53,6 +55,21 @@ const useHome = () => {
       .then(() => console.log('Data updated.'));
   };
 
+  useEffect(() => {
+    const onValueChange = database
+      .ref('/data/temperature')
+      .on('value', snapshot => {
+        console.log('TEMPERATURE: ', snapshot.val());
+        setTemperature(snapshot.val());
+      });
+
+    // Stop listening for updates when no longer required
+    return () =>
+      database
+        .ref(`/data/temperature/${temperature}`)
+        .off('value', onValueChange);
+  }, [temperature] );
+  
   return {
     fan,
     setFan,
@@ -66,6 +83,7 @@ const useHome = () => {
     handleLamp1,
     handleLamp2,
     handleLamp3,
+    temperature,
   };
 };
 
