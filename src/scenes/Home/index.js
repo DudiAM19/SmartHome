@@ -35,17 +35,16 @@ const Home = ({navigation}) => {
             <Text style={styles.TextTemp}>Average Temperature</Text>
           </View>
           <View style={styles.ConditionSection}>
-            <Text style={styles.Number}>{parseInt( temperature )}°C</Text>
-            {parseInt( temperature ) >= 30 && (
+            <Text style={styles.Number}>{parseInt(temperature)}°C</Text>
+            {parseInt(temperature) >= 30 && (
               <Text style={styles.hotCondition}> Hot</Text>
             )}
-            {parseInt( temperature ) <= 20 && (
+            {parseInt(temperature) <= 20 && (
               <Text style={styles.coolCondition}> Cool</Text>
             )}
-            {parseInt( temperature ) >= 21 && parseInt( temperature ) <= 29 &&(
+            {parseInt(temperature) >= 21 && parseInt(temperature) <= 29 && (
               <Text style={styles.normalCondition}> Normal</Text>
             )}
-            
           </View>
         </View>
         <View style={{flexDirection: 'row'}}>

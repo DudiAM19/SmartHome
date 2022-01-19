@@ -11,8 +11,8 @@ const useHome = () => {
   const [fan, setFan] = useState(false);
   const [lamp1, setLamp1] = useState(false);
   const [lamp2, setLamp2] = useState(false);
-  const [lamp3, setLamp3] = useState( false );
-  
+  const [lamp3, setLamp3] = useState(false);
+
   const [temperature, setTemperature] = useState(0);
 
   const handleFan = () => {
@@ -64,12 +64,9 @@ const useHome = () => {
       });
 
     // Stop listening for updates when no longer required
-    return () =>
-      database
-        .ref(`/data/temperature/${temperature}`)
-        .off('value', onValueChange);
-  }, [temperature] );
-  
+    return () => database.ref('/data/temperature').off('value', onValueChange);
+  }, [temperature]);
+
   return {
     fan,
     setFan,

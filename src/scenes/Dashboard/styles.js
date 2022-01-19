@@ -69,7 +69,7 @@ export default StyleSheet.create({
   },
   ImgTemperature: {
     width: width * 0.15,
-    height: width * 0.20,
+    height: width * 0.2,
     marginTop: width * 0.1,
     marginLeft: width * 0.08,
     marginRight: width * 0.02,
@@ -99,7 +99,19 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: width * 0.04,
   },
+  TextDanger: seconds => ( {
+    backgroundColor: seconds ? Colors.WHITE : Colors.DANGER,
+    width: width * 0.3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: width * 0.04,
+  }),
   TextFire: {
+    fontWeight: 'bold',
+    fontSize: RFValue(18),
+    color: Colors.BLACK_TEXT,
+  },
+  TextGas: {
     fontWeight: 'bold',
     fontSize: RFValue(18),
     color: Colors.BLACK_TEXT,
@@ -130,5 +142,21 @@ export default StyleSheet.create({
   },
   FlatList: {
     marginTop: -60,
+  },
+
+  dangerCondition: {
+    fontSize: RFValue(16),
+    color: '#ec5353',
+    fontWeight: 'bold',
+  },
+  goodCondition: {
+    fontSize: RFValue(16),
+    color: '#1ecf34',
+    fontWeight: 'bold',
+  },
+  normalCondition: {
+    fontSize: RFValue(16),
+    color: '#f58941',
+    fontWeight: 'bold',
   },
 });

@@ -9,9 +9,21 @@ const database = firebase
   );
 
 const useDashboard = () => {
-  const [danger, setDanger] = useState(0);
-  const [gas, setGas] = useState(0);
-  const [temperature, setTemperature] = useState(0);
+  const [fire, setFire] = useState('0');
+  const [gas, setGas] = useState('0');
+  const [temperature, setTemperature] = useState('0');
+  const [seconds, setSeconds] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds) {
+        setSeconds(false);
+      } else {
+        setSeconds(true);
+      }
+    }, 500);
+    return () => clearInterval(interval);
+  }, [seconds]);
 
   useEffect(() => {
     handleStoreFcmToken();
@@ -22,16 +34,14 @@ const useDashboard = () => {
       .ref('/data/flame_status')
       .on('value', snapshot => {
         console.log('FLAME STATUS: ', snapshot.val());
-        setDanger(snapshot.val());
-        if (snapshot.val() === '1') {
+        setFire(snapshot.val());
+        if (snapshot.val() <= '400') {
           handleDisplayNotification();
         }
       });
-
     // Stop listening for updates when no longer required
-    return () =>
-      database.ref(`/data/flame_status/${danger}`).off('value', onValueChange);
-  }, [danger]);
+    return () => database.ref('/data/flame_status').off('value', onValueChange);
+  }, [fire]);
 
   useEffect(() => {
     const onValueChange = database
@@ -39,11 +49,13 @@ const useDashboard = () => {
       .on('value', snapshot => {
         console.log('GAS STATUS: ', snapshot.val());
         setGas(snapshot.val());
+        if (snapshot.val() >= '500') {
+          handleDisplayNotificationGas();
+        }
       });
 
     // Stop listening for updates when no longer required
-    return () =>
-      database.ref(`/data/gas_status/${gas}`).off('value', onValueChange);
+    return () => database.ref('/data/gas_status').off('value', onValueChange);
   }, [gas]);
 
   useEffect(() => {
@@ -52,13 +64,13 @@ const useDashboard = () => {
       .on('value', snapshot => {
         console.log('TEMPERATURE: ', snapshot.val());
         setTemperature(snapshot.val());
+        if (snapshot.val() >= '34') {
+          handleDisplayNotificationTemp();
+        }
       });
 
     // Stop listening for updates when no longer required
-    return () =>
-      database
-        .ref(`/data/temperature/${temperature}`)
-        .off('value', onValueChange);
+    return () => database.ref('/data/temperature').off('value', onValueChange);
   }, [temperature]);
 
   const handleStoreFcmToken = () => {
@@ -95,11 +107,33 @@ const useDashboard = () => {
       largeIcon: 'notification_icon',
       smallIcon: 'notification_icon',
       title: 'WARNING!',
-      message: 'FIRE DETECTION',
+      message: 'FIRE DETECTION!',
     });
   };
 
-  return {danger, gas, temperature};
+  const handleDisplayNotificationGas = () => {
+    PushNotification.localNotification({
+      channelId: 'conversation',
+      priority: 'high',
+      largeIcon: 'notification_icon',
+      smallIcon: 'notification_icon',
+      title: 'WARNING!',
+      message: 'GAS LEAKING!, turn on the fan automatically',
+    });
+  };
+
+  const handleDisplayNotificationTemp = () => {
+    PushNotification.localNotification({
+      channelId: 'conversation',
+      priority: 'high',
+      largeIcon: 'notification_icon',
+      smallIcon: 'notification_icon',
+      title: 'WARNING!',
+      message: 'The temperature is too HOT!, turn on the fan',
+    });
+  };
+
+  return {fire, gas, temperature, seconds};
 };
 
 export default useDashboard;

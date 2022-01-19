@@ -4,33 +4,6 @@ import {Container} from 'components';
 import styles from './styles';
 import useDashboard from './useDashboard';
 
-const DATA = [
-  {
-    id: 1,
-    image: require('../../assets/flame.png'),
-    textFire: 'Fire Temperature',
-    textTemp: 'Temperature',
-    textCondition: 'Good',
-    textLevel: '',
-  },
-  {
-    id: 2,
-    image: require('../../assets/gas-tank.png'),
-    textFire: 'Gas',
-    textTemp: 'Pressure',
-    textCondition: 'Good',
-    textLevel: '97°C',
-  },
-  {
-    id: 3,
-    image: require('../../assets/temperature1.png'),
-    textFire: 'Average',
-    textTemp: 'Temperature',
-    textCondition: 'Hot',
-    textLevel: '30°C',
-  },
-];
-
 const Item = props => {
   return (
     <View style={styles.InfoSection}>
@@ -50,7 +23,7 @@ const Item = props => {
 };
 
 const Dashboard = ({navigation}) => {
-  const {danger, gas, temperature} = useDashboard();
+  const {fire, gas, temperature, seconds} = useDashboard();
   return (
     <Container backgroundColor="#2D3436">
       <View style={styles.Header}>
@@ -63,21 +36,39 @@ const Dashboard = ({navigation}) => {
         </View>
       </View>
       <View style={styles.Card}>
-        {danger === '1' && (
-          <View style={styles.FlatList}>
-            <View style={styles.InfoSection}>
-              <View style={styles.ImgSection}>
-                <Image
-                  source={require('../../assets/ezgif.com-gif-maker.gif')}
-                  style={styles.ImgFire}
-                />
-              </View>
-              <View style={styles.dangerTextWrap}>
-                <Text style={styles.dangerText}>DANGER</Text>
-              </View>
+        <View style={styles.FlatList}>
+          <View style={styles.InfoSection}>
+            <View style={styles.ImgSection}>
+              <Image
+                source={require('../../assets/ezgif.com-gif-maker.gif')}
+                style={styles.ImgFire}
+              />
+            </View>
+            <View
+              style={
+                parseInt(fire) <= 400
+                  ? styles.TextDanger(seconds)
+                  : styles.TextSection
+              }>
+              {parseInt(fire) <= 400 ? (
+                <Text style={styles.TextFire}>{'Ada Titik Api'}</Text>
+              ) : (
+                <Text style={styles.TextFire}>{'Flame'}</Text>
+              )}
+              <Text style={styles.Number} />
+              {parseInt(fire) <= 400 && (
+                <Text style={styles.dangerCondition}> Danger</Text>
+              )}
+              {parseInt(fire) >= 401 && (
+                <Text style={styles.goodCondition}> Good</Text>
+              )}
+            </View>
+            <View style={styles.LevelSection}>
+              <Text style={styles.TextLevel}>{fire} nm</Text>
             </View>
           </View>
-        )}
+        </View>
+
         <View style={styles.FlatList}>
           <View style={styles.InfoSection}>
             <View style={styles.ImgSection}>
@@ -87,7 +78,17 @@ const Dashboard = ({navigation}) => {
               />
             </View>
             <View style={styles.TextSection}>
-              <Text style={styles.TextFire}>{'Gas'}</Text>
+              <Text style={styles.TextGas}>{'Gas'}</Text>
+              <Text style={styles.Number}>{parseInt(gas)}°C</Text>
+              {parseInt(gas) >= 500 && (
+                <Text style={styles.dangerCondition}> Danger</Text>
+              )}
+              {parseInt(gas) <= 299 && (
+                <Text style={styles.goodCondition}> Good</Text>
+              )}
+              {parseInt(gas) >= 300 && parseInt(gas) <= 499 && (
+                <Text style={styles.normalCondition}> Normal</Text>
+              )}
             </View>
             <View style={styles.LevelSection}>
               <Text style={styles.TextLevel}>{gas} p</Text>
